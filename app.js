@@ -16,7 +16,7 @@ const port=process.env.port || 3000;
 
 mongoose.connect("mongodb+srv://anupamamt:anupama2000@cluster0.nfdclmf.mongodb.net/LibraryDB?retryWrites=true&w=majority")
 
-app.post('/api/addNewBook',async (req,res)=>{
+app.post('/api/api/addNewBook',async (req,res)=>{
     let data=req.body
     const book=new booksModel(data)
     await book.save((error,dbdata)=>{
@@ -29,7 +29,7 @@ app.post('/api/addNewBook',async (req,res)=>{
     })
 })
 
-app.get('/api/viewBooks',async (req,res)=>{
+app.get('/api/api/viewBooks',async (req,res)=>{
     booksModel.find((error,dbdata)=>{
         if(error){
             res.json(error)
@@ -40,7 +40,7 @@ app.get('/api/viewBooks',async (req,res)=>{
     })
 })
 
-app.put('/api/bookUpdate/:id',async (req,res)=>{
+app.put('/api/api/bookUpdate/:id',async (req,res)=>{
     let data=req.body
     await booksModel.findOneAndUpdate({"_id":req.params.id},data)
     res.send(data)
@@ -57,7 +57,7 @@ app.put('/api/bookUpdate/:id',async (req,res)=>{
     })
 })
 
-app.delete('/api/deleteBook/:id',(req,res)=>{
+app.delete('/api/api/deleteBook/:id',(req,res)=>{
     booksModel.remove({"_id":req.params.id},(err,data)=>{
       if(err){
         res.send("The error is "+err)
