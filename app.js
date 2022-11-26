@@ -11,6 +11,7 @@ app.use(cors())
 app.use(express.json())
 app.use(logger('dev'))
 app.use(express.urlencoded({extended:true}))
+const port=process.env.port || 3000;
 
 mongoose.connect("mongodb+srv://anupamamt:anupama2000@cluster0.nfdclmf.mongodb.net/LibraryDB?retryWrites=true&w=majority")
 
@@ -67,6 +68,6 @@ app.delete('/api/api/deleteBook/:id',(req,res)=>{
   app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
    });
-app.listen(3000,()=>{
+app.listen(port,()=>{
     console.log("server is running")
 })
