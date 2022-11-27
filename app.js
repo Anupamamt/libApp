@@ -12,7 +12,7 @@ app.use(express.json())
 app.use(logger('dev'))
 app.use(express.urlencoded({extended:true}))
 app.use(express.static('./dist/frontend'));
-const port=process.env.port || 3000;
+const port=process.env.PORT || 3000;
 
 mongoose.connect("mongodb+srv://anupamamt:anupama2000@cluster0.nfdclmf.mongodb.net/LibraryDB?retryWrites=true&w=majority")
 
